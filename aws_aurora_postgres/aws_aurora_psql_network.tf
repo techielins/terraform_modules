@@ -10,7 +10,7 @@ resource "aws_db_subnet_group" "private_p" {
   
     name        =       lower("Aurora PSQL DB Subnet Group for cluster - ${var.cluster_identifier}")
     description =       lower("Aurora PSQL DB subnet group for cluster - ${var.cluster_identifier}")
-    subnet_ids  =       var.private_subnet_ids_p
+    subnet_ids  =       var.private_subnet_ids
     tags        =       merge({"ResourceName" = format("%s","Aurora PSQL DB Subnet Group for cluster - ${var.cluster_identifier}")}, var.tags, {"Created At" = "${formatdate("YYYY/MM/DD hh:mm:ss", timestamp())} GMT"})
 }
 
