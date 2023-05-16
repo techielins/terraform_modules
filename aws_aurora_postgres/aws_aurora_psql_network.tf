@@ -1,3 +1,9 @@
+//data source to retrieve information about the VPC ID
+data "aws_subnet" "aurora" {
+  id = var.subnet_ids[0]
+}
+
+
 //Creates a private subnet group
 
 resource "aws_db_subnet_group" "private_p" {
@@ -16,7 +22,7 @@ resource "aws_security_group" "aurora_security_group"{
     count       =   var.create_security_group ? 1 : 0
     name        =       lower("Aurora PSQL DB Subnet Group for cluster - ${var.cluster_identifier}")
     description =       lower("Aurora PSQL subnet-group for ${var.cluster_identifier}")
-    vpc_id      =   var.vpc_id
+    vpc_id      =   data.aws_subnet.aurora.vpc_id
     tags        =   merge({"ResourceName" = format("%s","Aurora PSQL DB Subnet Group for cluster - ${var.cluster_identifier}")}, var.tags, {"Created At" = "${formatdate("YYYY/MM/DD hh:mm:ss", timestamp())} GMT"})
 }
 
