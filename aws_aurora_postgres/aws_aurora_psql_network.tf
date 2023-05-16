@@ -1,6 +1,6 @@
 //data source to retrieve information about the VPC ID
 data "aws_subnet" "aurora" {
-  id = var.subnet_ids[0]
+  id = var.private_subnet_ids[0]
 }
 
 
