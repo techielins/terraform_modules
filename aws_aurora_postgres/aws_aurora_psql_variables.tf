@@ -120,7 +120,7 @@ variable "special_character"{
 #DB SUBNET group
 ############################################################
 
-variable "private_subnet_ids_p" {
+variable "private_subnet_ids" {
     description = "A list of private subnet IDs in VPC region"
     type        = list(string)
     default     = null
