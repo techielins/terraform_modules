@@ -169,12 +169,6 @@ variable "replica_count" {
 #SECURITY GROUP
 ##############################################################
 
-variable "vpc_id"{
-    description = "The VPC id to which the security groups are mapped."
-    type        = string
-    default     = null
-}
-
 variable "create_security_group"{
     description = "Specifies whether a security group should be created or not"
                     //If false, then existing security group is used for creating the DB cluster
